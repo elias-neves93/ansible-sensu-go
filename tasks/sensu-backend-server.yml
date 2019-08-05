@@ -1,10 +1,12 @@
 ---
 - name: Add repository Ubuntu/Debian
-  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/script.deb.sh | bash -
+  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/ \
+         script.deb.sh | bash -
   when: ansible_os_family == 'Debian'
 
 - name: Add repository RHEL/CentOS
-  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/script.rpm.sh | bash -
+  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/ \
+         script.rpm.sh | bash -
   when: ansible_os_family == 'RedHat'
 
 - name: Install Packages Ubuntu/Debian
@@ -12,8 +14,8 @@
     name: "{{ packages }}"
   vars:
     packages:
-    - "sensu-go-backend"
-    - "sensu-go-cli"
+      - "sensu-go-backend"
+      - "sensu-go-cli"
   when: ansible_os_family == 'Debian'
 
 - name: Install Packages RHEL/CentOS
@@ -21,8 +23,8 @@
     name: "{{ packages }}"
   vars:
     packages:
-    - "sensu-go-backend"
-    - "sensu-go-cli"
+      - "sensu-go-backend"
+      - "sensu-go-cli"
   when: ansible_os_family == 'RedHat'
 
 - name: Create config file sensu-backend
@@ -48,4 +50,6 @@
     state: started
 
 - name: Sensuctl configure
-  command: "sensuctl configure --non-interactive --username {{ default_user }} --password {{ default_pass }} --url http://localhost:8080 --format tabular --namespace default"
+  command: "sensuctl configure --non-interactive --username {{ default_user }} \
+            --password {{ default_pass }} --url http://localhost:8080 \
+            --format tabular --namespace default"

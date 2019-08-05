@@ -4,14 +4,14 @@ state_dir: "/var/lib/sensu/sensu-backend"
 cache_dir: "/var/cache/sensu/sensu-backend"
 config_file: "/etc/sensu/backend.yml"
 debug: false
-dashboard_ssl: False
+dashboard_ssl: false
 
 dashboard_port: 3000
 
-ssl_conf: False
-sensu_cluster: False
+ssl_conf: false
+sensu_cluster: false
 
-server: False
+server: false
 
 # sensu server
 user_sensu: sensu

@@ -1,13 +1,21 @@
 ---
 # CPU Checks
 - name: Install ASSET sensu-plugins-cpu-checks CentOS
-  shell: sensuctl asset create sensu-plugins-cpu-checks --url "https://assets.bonsai.sensu.io/68546e739d96fd695655b77b35b5aabfbabeb056/sensu-plugins-cpu-checks_4.0.0_centos_linux_amd64.tar.gz" --sha512 "518e7c17cf670393045bff4af318e1d35955bfde166e9ceec2b469109252f79043ed133241c4dc96501b6636a1ec5e008ea9ce055d1609865635d4f004d7187b"
+  shell: sensuctl asset create sensu-plugins-cpu-checks \
+         --url "https://assets.bonsai.sensu.io/68546e739d96fd695655b77b35b5aab \
+         fbabeb056/sensu-plugins-cpu-checks_4.0.0_centos_linux_amd64.tar.gz" \
+         --sha512 "518e7c17cf670393045bff4af318e1d35955bfde166e9ceec2b46910925 \
+         2f79043ed133241c4dc96501b6636a1ec5e008ea9ce055d1609865635d4f004d7187b"
   run_once: true
   when: ansible_os_family == 'RedHat'
   ignore_errors: true
 
 - name: Install ASSET sensu-plugins-cpu-checks Debian
-  shell: sensuctl asset create sensu-plugins-cpu-checks --url "https://assets.bonsai.sensu.io/68546e739d96fd695655b77b35b5aabfbabeb056/sensu-plugins-cpu-checks_4.0.0_debian_linux_amd64.tar.gz" --sha512 "da5a183ad1a1f76962561eed659c6184b3e5d6a412432e1ccb4297cce123c41f9a8bb4fdb9ab19663aada978ea862ab2bd5f00bc91e4769ddd87543f5662b3af"
+  shell: sensuctl asset create sensu-plugins-cpu-checks \
+         --url "https://assets.bonsai.sensu.io/68546e739d96fd695655b77b35b5aab \
+         fbabeb056/sensu-plugins-cpu-checks_4.0.0_debian_linux_amd64.tar.gz" \
+         --sha512 "da5a183ad1a1f76962561eed659c6184b3e5d6a412432e1ccb4297cce12 \
+         3c41f9a8bb4fdb9ab19663aada978ea862ab2bd5f00bc91e4769ddd87543f5662b3af"
   run_once: true
   when: ansible_os_family == 'Debian'
   ignore_errors: true

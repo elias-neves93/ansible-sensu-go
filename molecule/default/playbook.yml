@@ -1,55 +1,12 @@
 ---
 - name: Converge
-  hosts: all
-  pre_tasks:
-    - name: Install deps
-      yum:
-        name: net-tools
-        state: present
+  hosts: sensu-backend-server
+
   roles:
-    - role: ansible-nginx
+    - role: ansible-sensu-go
   vars:
-    nginx_upstreams:
-      - name: s3.amazonaws.com
-        servers: {
-          "s3.amazonaws.com:80"
-        }
-        keepalive: 32
-
-      - name: netshoes-freedom-ar.s3-accelerate.amazonaws.com
-        servers: {
-          "netshoes-freedom-ar.s3-accelerate.amazonaws.com:80"
-        }
-        keepalive: 32
-
-      - name: s3-sa-east-1.amazonaws.com
-        servers: {
-          "s3-sa-east-1.amazonaws.com:80"
-        }
-        keepalive: 32
-
-      - name: webstore-price-dev
-        servers: {
-          "tmb-dev-free-webstore-price-01.ns2online.com.br:8080",
-          "tmb-dev-free-webstore-price-02.ns2online.com.br:8080"
-        }
-        keepalive: 32
-
-      - name: webstore-price-hmg
-        servers: {
-          "tmb-hmg-free-webstore-price-01.ns2online.com.br:8080",
-          "tmb-hmg-free-webstore-price-02.ns2online.com.br:8080"
-        }
-        keepalive: 32
-
-      - name: image-search-proxy-dev
-        servers: {
-          "tmb-dev-free-image-search-proxy-01.ns2online.com.br:8080"
-        }
-        keepalive: 32
-
-      - name: image-search-proxy-hmg
-        servers: {
-          "tmb-hmg-free-image-search-proxy-01.ns2online.com.br:8080"
-        }
-        keepalive: 32
+    server: true
+    sensu_client_subs:
+      - linux
+    sensu_cluster: true
+  no_log: false

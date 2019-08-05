@@ -3,17 +3,17 @@
 - import_tasks: sensu-backend-server.yml
   tags: sensu-backend
   static: false
-  when: server == True
+  when: server == true
 
 - import_tasks: assets.yml
   tags: assets
   static: false
-  when: server == True
+  when: server == true
 
 - import_tasks: checks.yml
   tags: checks
   static: false
-  when: server == True
+  when: server == true
 
 - import_tasks: sensu-agent.yml
   tags: sensu-agent
@@ -21,6 +21,6 @@
 
 - include: plugins.yml
   tags: plugins
-#
-#- import_tasks: handlers.yml
-#  tags: handlers
+
+# - import_tasks: handlers.yml
+#   tags: handlers

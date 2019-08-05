@@ -23,7 +23,7 @@ debug: {{ debug }}
 #api-listen-address: "[::]:8080" # listen on all IPv4 and IPv6 addresses
 #api-url: "http://localhost:8080"
 
-{%if dashboard_ssl == True%}
+{%if dashboard_ssl == true%}
 ##
 # dashboard configuration
 ##
@@ -34,7 +34,7 @@ dashboard-key-file: "{{ dashboard_key_file }}"
 dashboard-host: "[::]" # listen on all IPv4 and IPv6 addresses
 dashboard-port: {{ dashboard_port }}
 
-{%if ssl_conf == True%}
+{%if ssl_conf == true%}
 ##
 # ssl configuration
 ##
@@ -47,7 +47,7 @@ insecure-skip-tls-verify: {{ insecure-skip-tls-verify }}
 ##
 # store configuration
 ##
-{%if sensu_cluster == True%}
+{%if sensu_cluster == true%}
 etcd-advertise-client-urls: "http://{{ ansible_enp0s8.ipv4.address }}:2379"
 etcd-initial-advertise-peer-urls: "http://{{ ansible_enp0s8.ipv4.address }}:2380"
 etcd-initial-cluster: "backend-1=http://192.168.88.100:2380,backend-2=http://192.168.88.101:2380,backend-3=http://192.168.88.102:2380"
