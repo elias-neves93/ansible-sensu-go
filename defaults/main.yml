@@ -11,6 +11,8 @@ dashboard_port: 3000
 ssl_conf: False
 sensu_cluster: False
 
+server: False
+
 # sensu server
 user_sensu: sensu
 group_sensu: sensu
