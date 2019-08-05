@@ -1,0 +1,28 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: ubuntu-01
+    image: ubuntu:latest
+    privileged: true
+    command: '/lib/systemd/systemd'
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+    options:
+      exclude:
+        - ../tasks/install.yml
+      x: ["ANSIBLE0011,ANSIBLE0012"]
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
