@@ -1,15 +1,14 @@
 ---
 - name: Add repository Ubuntu/Debian
-  shell: curl -s https://packagecloud.io/install/repositories/ \
-         sensu/stable/script.deb.sh | bash -
+  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/script.deb.sh | bash -
   when: ansible_os_family == 'Debian'
 
 - name: Install Packages Ubuntu/Debian
   apt:
     name: "{{ packages }}"
-    vars:
-      packages:
-        - "sensu-go-agent"
+  vars:
+    packages:
+      - "sensu-go-agent"
   when: ansible_os_family == 'Debian'
 
 - name: Define Subscritions

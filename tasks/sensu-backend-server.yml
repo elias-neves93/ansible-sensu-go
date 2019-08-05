@@ -1,12 +1,10 @@
 ---
 - name: Add repository Ubuntu/Debian
-  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/ \
-         script.deb.sh | bash -
+  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/script.deb.sh | bash -
   when: ansible_os_family == 'Debian'
 
 - name: Add repository RHEL/CentOS
-  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/ \
-         script.rpm.sh | bash -
+  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/script.rpm.sh | bash -
   when: ansible_os_family == 'RedHat'
 
 - name: Install Packages Ubuntu/Debian
