@@ -1,0 +1,4 @@
+---
+# vars file for roles/ansible-sensu-go
+default_user: admin
+default_pass: P@ssw0rd!

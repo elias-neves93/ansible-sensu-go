@@ -1,0 +1,35 @@
+---
+- name: Add repository Ubuntu/Debian
+  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/script.deb.sh | bash -
+  when: ansible_os_family == 'Debian'
+
+- name: Install Packages Ubuntu/Debian
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - "sensu-go-agent"
+  when: ansible_os_family == 'Debian'
+
+- name: Define Subscritions
+  set_fact:
+    all_subs: "{{ subs_default + sensu_client_subs }}"
+
+- debug:
+    msg: Facts TESTE {{ all_subs }}
+
+- name: Create config file sensu-agent
+  template:
+    src: agent.yml.j2
+    dest: /etc/sensu/agent.yml
+    owner: "{{ user_sensu }}"
+    group: "{{ group_sensu }}"
+  with_items: "{{ all_subs }}"
+  notify: Restart sensu-agent service
+
+- name: Ensure the sensu-agent is enabled
+  systemd:
+    name: sensu-agent
+    enabled: true
+    state: restarted
+    daemon_reload: true

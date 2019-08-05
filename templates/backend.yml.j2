@@ -1,0 +1,71 @@
+---
+# Sensu backend configuration
+
+##
+# backend configuration
+##
+
+state-dir: "{{ state_dir }}"
+cache-dir: "{{ cache_dir }}"
+config-file: "{{ config_file }}"
+debug: {{ debug }}
+#deregistration-handler: "example_handler"
+#log-level: "warn" # available log levels: panic, fatal, error, warn, info, debug
+##
+# agent configuration
+##
+#agent-host: "[::]" # listen on all IPv4 and IPv6 addresses
+#agent-port: 8081
+
+##
+# api configuration
+##
+#api-listen-address: "[::]:8080" # listen on all IPv4 and IPv6 addresses
+#api-url: "http://localhost:8080"
+
+{%if dashboard_ssl == True%}
+##
+# dashboard configuration
+##
+dashboard-cert-file: "{{ dashboard_cert_file }}"
+dashboard-key-file: "{{ dashboard_key_file }}"
+{% endif %}
+
+dashboard-host: "[::]" # listen on all IPv4 and IPv6 addresses
+dashboard-port: {{ dashboard_port }}
+
+{%if ssl_conf == True%}
+##
+# ssl configuration
+##
+cert-file: "{{ cert-file }}"
+key-file: "{{ key-file }}"
+trusted-ca-file: "{{ trusted-ca-file }}"
+insecure-skip-tls-verify: {{ insecure-skip-tls-verify }}
+{% endif %}
+
+##
+# store configuration
+##
+{%if sensu_cluster == True%}
+etcd-advertise-client-urls: "http://{{ ansible_enp0s8.ipv4.address }}:2379"
+etcd-initial-advertise-peer-urls: "http://{{ ansible_enp0s8.ipv4.address }}:2380"
+etcd-initial-cluster: "backend-1=http://192.168.88.100:2380,backend-2=http://192.168.88.101:2380,backend-3=http://192.168.88.102:2380"
+etcd-initial-cluster-state: "new" # new or existing
+etcd-initial-cluster-token: " "
+etcd-listen-client-urls: "http://{{ ansible_enp0s8.ipv4.address }}:2379"
+etcd-listen-peer-urls: "http://0.0.0.0:2380"
+etcd-name: "{{ ansible_hostname }}"
+{% endif %}
+
+#etcd-key-file: "/path/to/ssl/key.pem"
+#etcd-cert-file: "/path/to/ssl/cert.pem"
+#etcd-client-cert-auth: false
+#etcd-peer-cert-file: "/path/to/ssl/cert.pem"
+#etcd-peer-client-cert-auth: false
+#etcd-peer-key-file: "/path/to/ssl/key.pem"
+#etcd-peer-trusted-ca-file: "/path/to/ssl/key.pem"
+#etcd-trusted-ca-file: "/path/to/ssl/key.pem"
+#no-embed-etcd: false
+#etcd-cipher-suites
+#  - TLS_EXAMPLE

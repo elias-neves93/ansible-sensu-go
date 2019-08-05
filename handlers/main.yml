@@ -1,0 +1,10 @@
+---
+# handlers file for roles/ansible-sensu-go
+- name: Start sensu-backend service
+  service: name=sensu-backend enabled=yes state=started
+
+- name: Restart sensu-backend service
+  service: name=sensu-backend state=restarted
+
+- name: Restart sensu-agent service
+  service: name=sensu-agent state=restarted

@@ -1,0 +1,4 @@
+---
+# Checks for Linux
+- import_tasks: checks/checks-linux.yml
+  tags: checks-linux

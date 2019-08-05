@@ -1,0 +1,26 @@
+---
+# tasks file for roles/ansible-sensu-go
+- import_tasks: sensu-backend-server.yml
+  tags: sensu-backend
+  static: false
+  when: server == True
+
+- import_tasks: assets.yml
+  tags: assets
+  static: false
+  when: server == True
+
+- import_tasks: checks.yml
+  tags: checks
+  static: false
+  when: server == True
+
+- import_tasks: sensu-agent.yml
+  tags: sensu-agent
+  static: false
+
+- include: plugins.yml
+  tags: plugins
+#
+#- import_tasks: handlers.yml
+#  tags: handlers

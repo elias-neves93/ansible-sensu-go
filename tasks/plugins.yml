@@ -1,0 +1,12 @@
+---
+- name: Install Plugins Packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - "gcc"
+    - "python-pip"
+    - "ruby"
+    - "python-setuptools"
+    - "numactl"
+  when: ansible_os_family == 'Debian'

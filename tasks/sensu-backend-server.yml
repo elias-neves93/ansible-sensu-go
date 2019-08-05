@@ -1,0 +1,51 @@
+---
+- name: Add repository Ubuntu/Debian
+  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/script.deb.sh | bash -
+  when: ansible_os_family == 'Debian'
+
+- name: Add repository RHEL/CentOS
+  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/script.rpm.sh | bash -
+  when: ansible_os_family == 'RedHat'
+
+- name: Install Packages Ubuntu/Debian
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - "sensu-go-backend"
+    - "sensu-go-cli"
+  when: ansible_os_family == 'Debian'
+
+- name: Install Packages RHEL/CentOS
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - "sensu-go-backend"
+    - "sensu-go-cli"
+  when: ansible_os_family == 'RedHat'
+
+- name: Create config file sensu-backend
+  template:
+    src: backend.yml.j2
+    dest: /etc/sensu/backend.yml
+    owner: "{{ user_sensu }}"
+    group: "{{ group_sensu }}"
+  notify: Restart sensu-backend service
+
+- name: Ensure the sensu-backend is enabled
+  systemd:
+    name: sensu-backend
+    enabled: true
+    state: restarted
+    daemon_reload: true
+
+- name: Validate if port is listening
+  wait_for:
+    host: "{{ ansible_enp0s8.ipv4.address }}"
+    port: 8080
+    delay: 10
+    state: started
+
+- name: Sensuctl configure
+  command: "sensuctl configure --non-interactive --username {{ default_user }} --password {{ default_pass }} --url http://localhost:8080 --format tabular --namespace default"

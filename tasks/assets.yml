@@ -1,0 +1,18 @@
+---
+# Install ASSET Ruby Runtime for RedHat
+- name: Install ASSET Ruby Runtime CentOS
+  shell: sensuctl asset create sensu-ruby-runtime --url "https://assets.bonsai.sensu.io/03d08cdfc649500b7e8cd1708bb9bb93d91fea9e/sensu-ruby-runtime_0.0.8_ruby-2.4.4_centos_linux_amd64.tar.gz" --sha512 "7b254d305af512cc524a20a117c601bcfae0d51d6221bbfc60d8ade180cc1908081258a6eecfc9b196b932e774083537efe748c1534c83d294873dd3511e97a3"
+  run_once: true
+  when: ansible_os_family == 'RedHat'
+  ignore_errors: true
+
+# Install ASSET Ruby Runtime for Debian
+- name: Install ASSET Ruby Runtime Debian
+  shell: sensuctl asset create sensu-ruby-runtime --url "https://assets.bonsai.sensu.io/03d08cdfc649500b7e8cd1708bb9bb93d91fea9e/sensu-ruby-runtime_0.0.8_ruby-2.4.4_debian_linux_amd64.tar.gz" --sha512 "fbe9bc7fb3848495755a6eeffea586daf7720325438ba228d03f75f0eb34c1d63d944f74a4c202973d56b7710c9483412d48fd6fcce560cb2223fdcd75e998d9"
+  run_once: true
+  when: ansible_os_family == 'Debian'
+  ignore_errors: true
+
+# Install ASSET for checks
+- import_tasks: assets/assets-linux.yml
+  tags: assets-linux
