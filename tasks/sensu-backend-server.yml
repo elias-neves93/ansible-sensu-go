@@ -7,7 +7,7 @@
   when: ansible_os_family == 'Debian'
 
 - name: Run script to install Sensu Backend
-  command: bash /tmp/script-sensu-backend.deb.sh
+  command: /tmp/script-sensu-backend.deb.sh
   when: ansible_os_family == 'Debian'
 
 - name: Download Script to Add repository RHEL/CentOS
@@ -18,7 +18,7 @@
   when: ansible_os_family == 'RedHat'
 
 - name: Run script to install Sensu Backend
-  command: bash /tmp/script-sensu-backend.rpm.sh
+  command: /tmp/script-sensu-backend.rpm.sh
   when: ansible_os_family == 'RedHat'
 
 - name: Install Packages Ubuntu/Debian

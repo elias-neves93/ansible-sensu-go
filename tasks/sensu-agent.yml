@@ -7,7 +7,7 @@
   when: ansible_os_family == 'Debian'
 
 - name: Run script to install Sensu Agent
-  script: /tmp/script-sensu-agent.deb.sh
+  command: /tmp/script-sensu-agent.deb.sh
   when: ansible_os_family == 'Debian'
 
 - name: Download Script to Add repository RHEL/CentOS
@@ -18,7 +18,7 @@
   when: ansible_os_family == 'RedHat'
 
 - name: Run script to install Sensu Agent
-  script: /tmp/script-sensu-agent.rpm.sh
+  command: /tmp/script-sensu-agent.rpm.sh
   when: ansible_os_family == 'RedHat'
 
 - name: Install Packages Ubuntu/Debian
