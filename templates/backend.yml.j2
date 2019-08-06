@@ -50,7 +50,8 @@ insecure-skip-tls-verify: {{ insecure-skip-tls-verify }}
 {%if sensu_cluster == true%}
 etcd-advertise-client-urls: "{{ etcd_advertise_client_urls }}"
 etcd-initial-advertise-peer-urls: "{{ etcd_initial_advertise_peer_urls }}"
-etcd-initial-cluster: {%for item in etcd_initial_cluster %}"{{ item }}"{% if not loop.last %},{% endif %} {% endfor%}
+etcd-initial-cluster: {%for item in etcd_initial_cluster %}"{{ item }}"{% if not loop.last %},{% endif %}{% endfor%}
+
 etcd-initial-cluster-state: "{{ etcd_initial_cluster_state }}" # new or existing
 etcd-initial-cluster-token: "{{ etcd_initial_cluster_token }}"
 etcd-listen-client-urls: "{{ etcd_listen_client_urls }}"
