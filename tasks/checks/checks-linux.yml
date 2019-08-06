@@ -1,7 +1,7 @@
 ---
 # CPU Checks
 - name: Check CPU
-  shell: sensuctl check create check-cpu \
+  command: sensuctl check create check-cpu \
           --command 'check-cpu.rb -w 75 -c 90' \
           --interval 60 \
           --subscriptions linux \
@@ -10,7 +10,7 @@
   ignore_errors: true
 
 - name: Check metrics-cpu-mpstat
-  shell: sensuctl check create metrics-cpu-mpstat \
+  command: sensuctl check create metrics-cpu-mpstat \
           --command metrics-cpu-mpstat.rb \
           --interval 60 \
           --subscriptions linux \
@@ -19,7 +19,7 @@
   ignore_errors: true
 
 - name: Check metrics-cpu-pcnt-usage
-  shell: sensuctl check create metrics-cpu-pcnt-usage \
+  command: sensuctl check create metrics-cpu-pcnt-usage \
           --command metrics-cpu-pcnt-usage.rb \
           --interval 60 \
           --subscriptions linux \
@@ -28,7 +28,7 @@
   ignore_errors: true
 
 - name: Check metrics-numastat
-  shell: sensuctl check create metrics-numastat \
+  command: sensuctl check create metrics-numastat \
           --command metrics-numastat.rb \
           --interval 60 \
           --subscriptions linux \
@@ -37,7 +37,7 @@
   ignore_errors: true
 
 - name: Check metrics-user-pct-usage
-  shell: sensuctl check create metrics-user-pct-usage \
+  command: sensuctl check create metrics-user-pct-usage \
           --command metrics-user-pct-usage.rb \
           --interval 60 \
           --subscriptions linux \

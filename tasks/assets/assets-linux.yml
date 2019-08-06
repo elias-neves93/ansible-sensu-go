@@ -1,7 +1,7 @@
 ---
 # CPU Checks
 - name: Install ASSET sensu-plugins-cpu-checks CentOS
-  shell: sensuctl asset create sensu-plugins-cpu-checks \
+  command: sensuctl asset create sensu-plugins-cpu-checks \
          --url "https://assets.bonsai.sensu.io/68546e739d96fd695655b77b35b5aab \
          fbabeb056/sensu-plugins-cpu-checks_4.0.0_centos_linux_amd64.tar.gz" \
          --sha512 "518e7c17cf670393045bff4af318e1d35955bfde166e9ceec2b46910925 \
@@ -11,7 +11,7 @@
   ignore_errors: true
 
 - name: Install ASSET sensu-plugins-cpu-checks Debian
-  shell: sensuctl asset create sensu-plugins-cpu-checks \
+  command: sensuctl asset create sensu-plugins-cpu-checks \
          --url "https://assets.bonsai.sensu.io/68546e739d96fd695655b77b35b5aab \
          fbabeb056/sensu-plugins-cpu-checks_4.0.0_debian_linux_amd64.tar.gz" \
          --sha512 "da5a183ad1a1f76962561eed659c6184b3e5d6a412432e1ccb4297cce12 \

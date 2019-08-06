@@ -1,7 +1,7 @@
 ---
 # Install ASSET Ruby Runtime for RedHat
 - name: Install ASSET Ruby Runtime CentOS
-  shell: sensuctl asset create sensu-ruby-runtime \
+  command: sensuctl asset create sensu-ruby-runtime \
          --url "https://assets.bonsai.sensu.io/ \
          03d08cdfc649500b7e8cd1708bb9bb93d91fea9e/ \
          sensu-ruby-runtime_0.0.8_ruby-2.4.4_centos_linux_amd64.tar.gz" \
@@ -13,7 +13,7 @@
 
 # Install ASSET Ruby Runtime for Debian
 - name: Install ASSET Ruby Runtime Debian
-  shell: sensuctl asset create sensu-ruby-runtime \
+  command: sensuctl asset create sensu-ruby-runtime \
          --url "https://assets.bonsai.sensu.io/03d08 \
          cdfc649500b7e8cd1708bb9bb93d91fea9e/ \
          sensu-ruby-runtime_0.0.8_ruby-2.4.4_debian_linux_amd64.tar.gz" \

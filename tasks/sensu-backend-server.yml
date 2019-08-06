@@ -1,11 +1,20 @@
 ---
-- name: Add repository Ubuntu/Debian
-  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/script.deb.sh | bash -
+- name: Download Script to Add repository Ubuntu/Debian
+  get_url:
+    url: https://packagecloud.io/install/repositories/sensu/stable/script.deb.sh
+    dest: /tmp/script-sensu-backend.deb.sh
+    mode: '0766'
   when: ansible_os_family == 'Debian'
 
-- name: Add repository RHEL/CentOS
-  shell: curl -s https://packagecloud.io/install/repositories/sensu/stable/script.rpm.sh | bash -
+- name: Download Script to Add repository RHEL/CentOS
+  get_url:
+    url: https://packagecloud.io/install/repositories/sensu/stable/script.rpm.sh
+    dest: /tmp/script-sensu-backend.rpm.sh
+    mode: '0766'
   when: ansible_os_family == 'RedHat'
+
+- name: Run script to install Sensu Backend
+  script: /tmp/script-sensu-backend.*.sh
 
 - name: Install Packages Ubuntu/Debian
   apt:
