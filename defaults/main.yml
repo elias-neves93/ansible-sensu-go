@@ -13,11 +13,13 @@ sensu_cluster: false
 server: false
 
 etcd_advertise_client_urls: "http://{{ ansible_default_ipv4.address }}:2379"
-etcd_initial_advertise_peer_urls: "http://{{ ansible_default_ipv4.address }}:2380"
+etcd_initial_advertise_peer_urls:
+  "http://{{ ansible_default_ipv4.address }}:2380"
 etcd_initial_cluster:
   - "{{ ansible_hostname }}={{ ansible_default_ipv4.address }}:2380"
 
-etcd_initial_cluster_state: "new" # new or existing
+etcd_initial_cluster_state: "new"
+# new or existing
 etcd_initial_cluster_token: " "
 etcd_listen_client_urls: "http://{{ ansible_default_ipv4.address }}:2379"
 etcd_listen_peer_urls: "http://0.0.0.0:2380"

@@ -8,4 +8,16 @@
     server: true
     sensu_client_subs:
       - linux
-    sensu_cluster: true
+    sensu_cluster: false
+
+    etcd_advertise_client_urls: "http://172.17.0.2:2379"
+    etcd_initial_advertise_peer_urls:
+      "http://172.17.0.2:2380"
+    etcd_initial_cluster:
+      - "{{ ansible_hostname }}=http://172.17.0.2:2380"
+
+    etcd_initial_cluster_state: "new"
+    etcd_initial_cluster_token: " "
+    etcd_listen_client_urls: "http://172.17.0.2:2379"
+    etcd_listen_peer_urls: "http://0.0.0.0:2380"
+    etcd_name: "{{ ansible_hostname }}"
