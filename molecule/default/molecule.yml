@@ -6,8 +6,8 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: ubuntu-01
-    image: ubuntu:latest
+  - name: nginx-centos-01
+    image: centos:7.6.1810
     privileged: true
     command: '/lib/systemd/systemd'
     volumes:

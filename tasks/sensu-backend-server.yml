@@ -6,6 +6,10 @@
     mode: '0766'
   when: ansible_os_family == 'Debian'
 
+- name: Run script to install Sensu Backend
+  command: bash /tmp/script-sensu-backend.deb.sh
+  when: ansible_os_family == 'Debian'
+
 - name: Download Script to Add repository RHEL/CentOS
   get_url:
     url: https://packagecloud.io/install/repositories/sensu/stable/script.rpm.sh
@@ -14,7 +18,8 @@
   when: ansible_os_family == 'RedHat'
 
 - name: Run script to install Sensu Backend
-  script: /tmp/script-sensu-backend.*.sh
+  command: bash /tmp/script-sensu-backend.rpm.sh
+  when: ansible_os_family == 'RedHat'
 
 - name: Install Packages Ubuntu/Debian
   apt:

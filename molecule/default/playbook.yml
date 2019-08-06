@@ -1,6 +1,6 @@
 ---
 - name: Converge
-  hosts: sensu-backend-server
+  hosts: all
 
   roles:
     - role: ansible-sensu-go
@@ -9,4 +9,3 @@
     sensu_client_subs:
       - linux
     sensu_cluster: true
-  no_log: false

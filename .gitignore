@@ -1,0 +1,3 @@
+### Molecule ###
+# pycache
+molecule/default/tests/__pycache__
