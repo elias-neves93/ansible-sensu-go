@@ -48,14 +48,14 @@ insecure-skip-tls-verify: {{ insecure-skip-tls-verify }}
 # store configuration
 ##
 {%if sensu_cluster == true%}
-etcd-advertise-client-urls: "http://{{ ansible_enp0s8.ipv4.address }}:2379"
-etcd-initial-advertise-peer-urls: "http://{{ ansible_enp0s8.ipv4.address }}:2380"
-etcd-initial-cluster: "backend-1=http://192.168.88.100:2380,backend-2=http://192.168.88.101:2380,backend-3=http://192.168.88.102:2380"
-etcd-initial-cluster-state: "new" # new or existing
-etcd-initial-cluster-token: " "
-etcd-listen-client-urls: "http://{{ ansible_enp0s8.ipv4.address }}:2379"
-etcd-listen-peer-urls: "http://0.0.0.0:2380"
-etcd-name: "{{ ansible_hostname }}"
+etcd-advertise-client-urls: "{{ etcd_advertise_client_urls }}"
+etcd-initial-advertise-peer-urls: "{{ etcd_initial_advertise_peer_urls }}"
+etcd-initial-cluster: {%for item in etcd_initial_cluster %}"{{ item }}"{% if not loop.last %},{% endif %} {% endfor%}
+etcd-initial-cluster-state: "{{ etcd_initial_cluster_state }}" # new or existing
+etcd-initial-cluster-token: "{{ etcd_initial_cluster_token }}"
+etcd-listen-client-urls: "{{ etcd_listen_client_urls }}"
+etcd-listen-peer-urls: "{{ etcd_listen_peer_urls }}"
+etcd-name: "{{ etcd_name }}"
 {% endif %}
 
 #etcd-key-file: "/path/to/ssl/key.pem"

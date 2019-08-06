@@ -10,8 +10,21 @@ dashboard_port: 3000
 
 ssl_conf: false
 sensu_cluster: false
-
 server: false
+
+etcd_advertise_client_urls: "http://{{ ansible_eth0_ipv4.address }}:2379"
+etcd_initial_advertise_peer_urls: "http://{{ ansible_default_ipv4.address }}:2380"
+etcd_initial_cluster:
+  - "{{ ansible_hostname }}=http://192.168.88.100:2380"
+  - "{{ ansible_hostname }}=http://192.168.88.101:2380"
+  - "{{ ansible_hostname }}=http://192.168.88.102:2380"
+
+etcd_initial_cluster_state: "new" # new or existing
+etcd_initial_cluster_token: " "
+etcd_listen_client_urls: "http://{{ ansible_default_ipv4.address }}:2379"
+etcd_listen_peer_urls: "http://0.0.0.0:2380"
+etcd_name: "{{ ansible_hostname }}"
+
 
 # sensu server
 user_sensu: sensu
