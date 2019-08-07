@@ -9,7 +9,6 @@
   run_once: true
   when: ansible_os_family == 'RedHat'
   ignore_errors: true
-  changed_when: false
 
 - name: Install ASSET sensu-plugins-cpu-checks Debian
   command: sensuctl asset create sensu-plugins-cpu-checks \
@@ -20,4 +19,24 @@
   run_once: true
   when: ansible_os_family == 'Debian'
   ignore_errors: true
-  changed_when: false
+
+# Memory
+- name: Install ASSET sensu-plugins-cpu-checks CentOS
+  command: sensuctl asset create sensu-plugins-cpu-checks \
+         --url "https://assets.bonsai.sensu.io/c5391d4ae186484226732344b35cf95 \
+         c0b07b8ec/sensu-plugins-memory-checks_4.0.0_centos_linux_amd64.tar.gz"\
+         --sha512 "ea297a85aa3612da7f78d948f9784443fffac511040c5130a2dcde7191a \
+          0004044c2ef881e665520cbc64431955ab19920d84de6b5fed85c63da7091c4b93bf0"
+  run_once: true
+  when: ansible_os_family == 'RedHat'
+  ignore_errors: true
+
+- name: Install ASSET sensu-plugins-cpu-checks Debian
+  command: sensuctl asset create sensu-plugins-cpu-checks \
+         --url "https://assets.bonsai.sensu.io/c5391d4ae186484226732344b35cf95c\
+         0b07b8ec/sensu-plugins-memory-checks_4.0.0_debian_linux_amd64.tar.gz" \
+         --sha512 "3c61ab6f4eb5dea4ee816e4f9a4f857660ac32648d0ecd7804e1827351d \
+         8fe021f29e557d9600ecac8cd16d261c8ff2dc113790a544ce1148a8cb321546552d6"
+  run_once: true
+  when: ansible_os_family == 'Debian'
+  ignore_errors: true
