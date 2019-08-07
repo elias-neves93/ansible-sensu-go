@@ -8,6 +8,7 @@
           --runtime-assets sensu-plugins-cpu-checks,sensu-ruby-runtime
   run_once: true
   ignore_errors: true
+  changed_when: false
 
 - name: Check metrics-cpu-mpstat
   command: sensuctl check create metrics-cpu-mpstat \
@@ -17,6 +18,7 @@
           --runtime-assets sensu-plugins-cpu-checks,sensu-ruby-runtime
   run_once: true
   ignore_errors: true
+  changed_when: false
 
 - name: Check metrics-cpu-pcnt-usage
   command: sensuctl check create metrics-cpu-pcnt-usage \
@@ -26,6 +28,7 @@
           --runtime-assets sensu-plugins-cpu-checks,sensu-ruby-runtime
   run_once: true
   ignore_errors: true
+  changed_when: false
 
 - name: Check metrics-numastat
   command: sensuctl check create metrics-numastat \
@@ -35,6 +38,7 @@
           --runtime-assets sensu-plugins-cpu-checks,sensu-ruby-runtime
   run_once: true
   ignore_errors: true
+  changed_when: false
 
 - name: Check metrics-user-pct-usage
   command: sensuctl check create metrics-user-pct-usage \
@@ -44,3 +48,4 @@
           --runtime-assets sensu-plugins-cpu-checks,sensu-ruby-runtime
   run_once: true
   ignore_errors: true
+  changed_when: false

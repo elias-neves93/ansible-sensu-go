@@ -22,9 +22,10 @@ subscriptions:
 # agent configuration
 ##
 backend-url:
-  - "ws://192.168.88.100:8081"
-  - "ws://192.168.88.101:8081"
-  - "ws://192.168.88.102:8081"
+{% for backend in backend_url %}
+  - {{ backend }}
+{% endfor %}
+
 #cache-dir: "/var/cache/sensu/sensu-agent"
 #config-file: "/etc/sensu/agent.yml"
 #disable-assets: false
