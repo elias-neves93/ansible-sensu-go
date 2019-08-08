@@ -32,3 +32,20 @@
   run_once: true
   when: ansible_os_family == 'Debian'
   ignore_errors: true
+
+# Vmstat
+- name: Install ASSET sensu-plugins-vmstats CentOS
+  command: sensuctl asset create sensu-plugins-vmstats \
+         --url "https://assets.bonsai.sensu.io/5c97f93791b98b2542c5c9739e88ca28b76a95ac/sensu-plugins-vmstats_2.0.0_centos_linux_amd64.tar.gz"\
+         --sha512 "366eb41a1ad3b7750d7de5f510b6a17393729eac09d4b786e9af440b8036a737fa3ff8da1e137238edce8585898fa936cf096c4c12c226f628d998ca59769e6f"
+  run_once: true
+  when: ansible_os_family == 'RedHat'
+  ignore_errors: true
+
+- name: Install ASSET sensu-plugins-vmstats Debian
+  command: sensuctl asset create sensu-plugins-vmstats \
+         --url "https://assets.bonsai.sensu.io/5c97f93791b98b2542c5c9739e88ca28b76a95ac/sensu-plugins-vmstats_2.0.0_debian_linux_amd64.tar.gz" \
+         --sha512 "6c19ba8bbc2f3a87b1dde5a1e759f8ab7bafc2b4c2c7063516a521ffae052892955adf596f2489a0dab135de3797695dd6f7428d64d06df78e0e8bfd228e4649"
+  run_once: true
+  when: ansible_os_family == 'Debian'
+  ignore_errors: true
