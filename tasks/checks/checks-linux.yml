@@ -64,15 +64,6 @@
   run_once: true
   ignore_errors: true
 
-- name: Check check-ram
-  command: sensuctl check create check-ram \
-          --command check-ram.rb \
-          --interval 60 \
-          --subscriptions linux \
-          --runtime-assets sensu-plugins-memory-checks,sensu-ruby-runtime
-  run_once: true
-  ignore_errors: true
-
 - name: Check check-swap-percent
   command: sensuctl check create check-swap-percent \
           --command check-swap-percent.rb -w 70 -c 80 \
@@ -106,15 +97,5 @@
           --interval 60 \
           --subscriptions linux \
           --runtime-assets sensu-plugins-memory-checks,sensu-ruby-runtime
-  run_once: true
-  ignore_errors: true
-
-# VmStats Checks
-- name: Check metrics-vmstats
-  command: sensuctl check create metrics-vmstats \
-          --command metrics-vmstats.rb \
-          --interval 60 \
-          --subscriptions linux \
-          --runtime-assets sensu-plugins-vmstats,sensu-ruby-runtime
   run_once: true
   ignore_errors: true
