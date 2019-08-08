@@ -81,6 +81,7 @@
           --runtime-assets sensu-plugins-memory-checks,sensu-ruby-runtime
   run_once: true
   ignore_errors: true
+  when: ansible_swaptotal_mb > 0
 
 - name: Check metrics-memory-percent
   command: sensuctl check create metrics-memory-percent \
