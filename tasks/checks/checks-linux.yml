@@ -100,3 +100,13 @@
           --runtime-assets sensu-plugins-memory-checks,sensu-ruby-runtime
   run_once: true
   ignore_errors: true
+
+# Disk Checks
+- name: Check check-disk-usage
+  command: sensuctl check create check-disk-usage \
+          --command check-disk-usage.rb -w ":::disk_warning|90:::" -c ":::disk_critical|95:::" -x ":::fs_type|tmpfs:::" -p "docker|kubelet|kernel|net" \
+          --interval 60 \
+          --subscriptions linux \
+          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
+  run_once: true
+  ignore_errors: true
