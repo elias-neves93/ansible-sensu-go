@@ -1,5 +1,5 @@
 ---
-image: "docker.latest"
+image: "docker:latest"
 stages:
   - test
 
@@ -12,9 +12,7 @@ cache:
     - virtenv/
 
 before_script:
-  - pip install virtualenv
-  - virtualenv virtenv
-  - source virtenv/bin/activate
+  - apk add python3 python3-dev libffi-dev build-base py-setuptools ansible
 
 molecule:
   stage: test
@@ -22,7 +20,7 @@ molecule:
   script:
     - docker -v
     - python -V
-    - pip install ansible molecule docker
+    - pip3 install cffi ansible molecule docker
     - ansible --version
     - molecule --version
     - molecule test
