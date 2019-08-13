@@ -120,36 +120,9 @@
   run_once: true
   ignore_errors: true
 
-- name: Check check-smart-status
-  command: sensuctl check create check-smart-status \
-          --command check-smart-status.rb \
-          --interval 60 \
-          --subscriptions linux \
-          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
-  run_once: true
-  ignore_errors: true
-
-- name: Check check-smart
-  command: sensuctl check create check-smart \
-          --command check-smart.rb \
-          --interval 60 \
-          --subscriptions linux \
-          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
-  run_once: true
-  ignore_errors: true
-
 - name: Check check-disk-usage
   command: sensuctl check create check-disk-usage \
           --command check-disk-usage.rb \
-          --interval 60 \
-          --subscriptions linux \
-          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
-  run_once: true
-  ignore_errors: true
-
-- name: Check check-smart-tests
-  command: sensuctl check create check-smart-tests \
-          --command check-smart-tests.rb \
           --interval 60 \
           --subscriptions linux \
           --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime

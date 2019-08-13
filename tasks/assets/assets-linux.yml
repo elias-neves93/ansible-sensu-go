@@ -36,7 +36,7 @@
 # Disk
 - name: Install ASSET sensu-plugins-disk-checks CentOS
   command: sensuctl asset create sensu-plugins-disk-checks \
-         --url "https://assets.bonsai.sensu.io/73a6f8b6f56672630d83ec21676f9a6251094475/sensu-plugins-disk-checks_5.0.0_centos_linux_amd64.tar.gz"\
+         --url "https://assets.bonsai.sensu.io/73a6f8b6f56672630d83ec21676f9a6251094475/sensu-plugins-disk-checks_5.0.0_centos_linux_amd64.tar.gz" \
          --sha512 "0ce9d52b270b77f4cab754e55732ae002228201d0bd01a89b954a0655b88c1ee6546e2f82cfd1eec04689af90ad940cde128e8867912d9e415f4a58d7fdcdadf"
   run_once: true
   when: ansible_os_family == 'RedHat'
@@ -44,7 +44,7 @@
 
 - name: Install ASSET sensu-plugins-disk-checks Debian
   command: sensuctl asset create sensu-plugins-disk-checks \
-         --url "https://assets.bonsai.sensu.io/73a6f8b6f56672630d83ec21676f9a6251094475/sensu-plugins-disk-checks_5.0.0_debian_linux_amd64.tar.gz"\
+         --url "https://assets.bonsai.sensu.io/73a6f8b6f56672630d83ec21676f9a6251094475/sensu-plugins-disk-checks_5.0.0_debian_linux_amd64.tar.gz" \
          --sha512 "efcc00a70ed8ebcab401b7dbd595d770a2b441e56d99143a923cbfc98977f6d085388b7411da706d47e6150b31ffa9b41ba78a0ee35a0e19eb21eee713009e19"
   run_once: true
   when: ansible_os_family == 'Debian'
