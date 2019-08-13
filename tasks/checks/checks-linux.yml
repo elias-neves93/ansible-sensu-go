@@ -104,7 +104,79 @@
 # Disk Checks
 - name: Check check-disk-usage
   command: sensuctl check create check-disk-usage \
-          --command check-disk-usage.rb -w ":::disk_warning|90:::" -c ":::disk_critical|95:::" -x ":::fs_type|tmpfs:::" -p "docker|kubelet|kernel|net" \
+          --command check-disk-usage.rb \
+          --interval 60 \
+          --subscriptions linux \
+          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
+  run_once: true
+  ignore_errors: true
+
+- name: Check check-fstab-mounts
+  command: sensuctl check create check-fstab-mounts \
+          --command check-fstab-mounts.rb \
+          --interval 60 \
+          --subscriptions linux \
+          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
+  run_once: true
+  ignore_errors: true
+
+- name: Check check-smart-status
+  command: sensuctl check create check-smart-status \
+          --command check-smart-status.rb \
+          --interval 60 \
+          --subscriptions linux \
+          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
+  run_once: true
+  ignore_errors: true
+
+- name: Check check-smart
+  command: sensuctl check create check-smart \
+          --command check-smart.rb \
+          --interval 60 \
+          --subscriptions linux \
+          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
+  run_once: true
+  ignore_errors: true
+
+- name: Check check-disk-usage
+  command: sensuctl check create check-disk-usage \
+          --command check-disk-usage.rb \
+          --interval 60 \
+          --subscriptions linux \
+          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
+  run_once: true
+  ignore_errors: true
+
+- name: Check check-smart-tests
+  command: sensuctl check create check-smart-tests \
+          --command check-smart-tests.rb \
+          --interval 60 \
+          --subscriptions linux \
+          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
+  run_once: true
+  ignore_errors: true
+
+- name: Check metrics-disk
+  command: sensuctl check create metrics-disk \
+          --command metrics-disk.rb \
+          --interval 60 \
+          --subscriptions linux \
+          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
+  run_once: true
+  ignore_errors: true
+
+- name: Check metrics-disk-capacity
+  command: sensuctl check create metrics-disk-capacity \
+          --command metrics-disk-capacity.rb \
+          --interval 60 \
+          --subscriptions linux \
+          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
+  run_once: true
+  ignore_errors: true
+
+- name: Check metrics-disk-usage
+  command: sensuctl check create metrics-disk-usage \
+          --command metrics-disk-usage.rb \
           --interval 60 \
           --subscriptions linux \
           --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
