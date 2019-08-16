@@ -22,5 +22,5 @@
 - include: plugins.yml
   tags: plugins
 
-# - import_tasks: handlers.yml
-#   tags: handlers
+- import_tasks: handlers.yml
+  tags: handlers

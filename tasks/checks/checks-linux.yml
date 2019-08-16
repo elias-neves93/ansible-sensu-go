@@ -5,7 +5,8 @@
           --command 'check-cpu.rb -w 75 -c 90' \
           --interval 60 \
           --subscriptions linux \
-          --runtime-assets sensu-plugins-cpu-checks,sensu-ruby-runtime
+          --runtime-assets sensu-plugins-cpu-checks,sensu-ruby-runtime \
+          --handlers slack
   run_once: true
   ignore_errors: true
 
@@ -51,7 +52,8 @@
           --command check-memory.rb -w 2500 -c 3000 \
           --interval 60 \
           --subscriptions linux \
-          --runtime-assets sensu-plugins-memory-checks,sensu-ruby-runtime
+          --runtime-assets sensu-plugins-memory-checks,sensu-ruby-runtime \
+          --handlers slack
   run_once: true
   ignore_errors: true
 
@@ -60,7 +62,8 @@
           --command check-memory-percent.rb -w 70 -c 80 \
           --interval 60 \
           --subscriptions linux \
-          --runtime-assets sensu-plugins-memory-checks,sensu-ruby-runtime
+          --runtime-assets sensu-plugins-memory-checks,sensu-ruby-runtime \
+          --handlers slack
   run_once: true
   ignore_errors: true
 
@@ -69,7 +72,8 @@
           --command check-swap-percent.rb -w 70 -c 80 \
           --interval 60 \
           --subscriptions linux \
-          --runtime-assets sensu-plugins-memory-checks,sensu-ruby-runtime
+          --runtime-assets sensu-plugins-memory-checks,sensu-ruby-runtime \
+          --handlers slack
   run_once: true
   ignore_errors: true
 
@@ -107,22 +111,14 @@
           --command check-disk-usage.rb \
           --interval 60 \
           --subscriptions linux \
-          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
+          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime \
+          --handlers slack
   run_once: true
   ignore_errors: true
 
 - name: Check check-fstab-mounts
   command: sensuctl check create check-fstab-mounts \
           --command check-fstab-mounts.rb \
-          --interval 60 \
-          --subscriptions linux \
-          --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime
-  run_once: true
-  ignore_errors: true
-
-- name: Check check-disk-usage
-  command: sensuctl check create check-disk-usage \
-          --command check-disk-usage.rb \
           --interval 60 \
           --subscriptions linux \
           --runtime-assets sensu-plugins-disk-checks,sensu-ruby-runtime

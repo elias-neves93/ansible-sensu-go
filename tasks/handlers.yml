@@ -1,0 +1,10 @@
+---
+# CPU Checks
+- name: Check CPU
+  command: sensuctl handler create slack \
+    --type pipe \
+    --env-vars "SLACK_WEBHOOK_URL={{ slack_webhook_url }}" \
+    --command "sensu-slack-handler --channel '{{ slack_channel }}'" \
+    --runtime-assets sensu-slack-handler
+  run_once: true
+  ignore_errors: true
