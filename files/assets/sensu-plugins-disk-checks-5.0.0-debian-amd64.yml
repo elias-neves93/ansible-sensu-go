@@ -1,0 +1,21 @@
+---
+type: Asset
+api_version: core/v2
+metadata:
+  name: sensu-plugins-disk-checks
+  labels:
+  annotations:
+    # yamllint disable-line rule:line-length
+    sensio.io.bonsai.url: https://assets.bonsai.sensu.io/73a6f8b6f56672630d83ec21676f9a6251094475/sensu-plugins-disk-checks_5.0.0_debian_linux_amd64.tar.gz
+    sensio.io.bonsai.tier: Community
+    sensio.io.bonsai.version: 5.0.0
+    sensio.io.bonsai.tags: ruby-runtime-2.4.4
+spec:
+  # yamllint disable-line rule:line-length
+  url: https://assets.bonsai.sensu.io/73a6f8b6f56672630d83ec21676f9a6251094475/sensu-plugins-disk-checks_5.0.0_debian_linux_amd64.tar.gz
+  # yamllint disable-line rule:line-length
+  sha512: efcc00a70ed8ebcab401b7dbd595d770a2b441e56d99143a923cbfc98977f6d085388b7411da706d47e6150b31ffa9b41ba78a0ee35a0e19eb21eee713009e19
+  filters:
+    - entity.system.os == 'linux'
+    - entity.system.arch == 'amd64'
+    - entity.system.platform == 'debian'

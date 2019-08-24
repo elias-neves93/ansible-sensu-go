@@ -1,0 +1,21 @@
+---
+type: Asset
+api_version: core/v2
+metadata:
+  name: sensu-ruby-runtime
+  labels:
+  annotations:
+    # yamllint disable-line rule:line-length
+    sensio.io.bonsai.url: https://assets.bonsai.sensu.io/da1e0d4af1cfe5edf8cb8dd1666a9743998694b9/sensu-ruby-runtime_0.0.9_ruby-2.4.4_centos_linux_amd64.tar.gz
+    sensio.io.bonsai.tier: Community
+    sensio.io.bonsai.version: 0.0.9
+    sensio.io.bonsai.tags:
+spec:
+  # yamllint disable-line rule:line-length
+  url: https://assets.bonsai.sensu.io/da1e0d4af1cfe5edf8cb8dd1666a9743998694b9/sensu-ruby-runtime_0.0.9_ruby-2.4.4_centos_linux_amd64.tar.gz
+  # yamllint disable-line rule:line-length
+  sha512: 483e4f7fcf54a9b38c422f9c4f43592738bcd6646d85437efa41f61d7799e282a6e6c2023deee54f6e61d4e4c1148575d8329f92c76a228c43e14b794f2e02aa
+  filters:
+    - entity.system.os == 'linux'
+    - entity.system.arch == 'amd64'
+    - entity.system.platform_family == 'rhel'

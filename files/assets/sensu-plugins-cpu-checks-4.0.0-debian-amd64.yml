@@ -1,0 +1,21 @@
+---
+type: Asset
+api_version: core/v2
+metadata:
+  name: sensu-plugins-cpu-checks
+  labels:
+  annotations:
+    # yamllint disable-line rule:line-length
+    sensio.io.bonsai.url: https://assets.bonsai.sensu.io/68546e739d96fd695655b77b35b5aabfbabeb05/6/sensu-plugins-cpu-checks_4.0.0_debian_linux_amd64.tar.gz
+    sensio.io.bonsai.tier: Community
+    sensio.io.bonsai.version: 4.0.0
+    sensio.io.bonsai.tags: ruby-runtime-2.4.4
+spec:
+  # yamllint disable-line rule:line-length
+  url: https://assets.bonsai.sensu.io/68546e739d96fd695655b77b35b5aabfbabeb056/sensu-plugins-cpu-checks_4.0.0_debian_linux_amd64.tar.gz
+  # yamllint disable-line rule:line-length
+  sha512: da5a183ad1a1f76962561eed659c6184b3e5d6a412432e1ccb4297cce123c41f9a8bb4fdb9ab19663aada978ea862ab2bd5f00bc91e4769ddd87543f5662b3af
+  filters:
+    - entity.system.os == 'linux'
+    - entity.system.arch == 'amd64'
+    - entity.system.platform == 'debian'

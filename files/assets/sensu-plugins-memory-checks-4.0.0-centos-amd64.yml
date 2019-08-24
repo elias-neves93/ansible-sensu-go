@@ -1,0 +1,21 @@
+---
+type: Asset
+api_version: core/v2
+metadata:
+  name: sensu-plugins-memory-checks
+  labels:
+  annotations:
+    # yamllint disable-line rule:line-length
+    sensio.io.bonsai.url: https://assets.bonsai.sensu.io/c5391d4ae186484226732344b35cf95c0b07b8ec/sensu-plugins-memory-checks_4.0.0_centos_linux_amd64.tar.gz
+    sensio.io.bonsai.tier: Community
+    sensio.io.bonsai.version: 4.0.0
+    sensio.io.bonsai.tags: ruby-runtime-2.4.4
+spec:
+  # yamllint disable-line rule:line-length
+  url: https://assets.bonsai.sensu.io/c5391d4ae186484226732344b35cf95c0b07b8ec/sensu-plugins-memory-checks_4.0.0_centos_linux_amd64.tar.gz
+  # yamllint disable-line rule:line-length
+  sha512: ea297a85aa3612da7f78d948f9784443fffac511040c5130a2dcde7191a0004044c2ef881e665520cbc64431955ab19920d84de6b5fed85c63da7091c4b93bf0
+  filters:
+    - entity.system.os == 'linux'
+    - entity.system.arch == 'amd64'
+    - entity.system.platform == 'rhel'

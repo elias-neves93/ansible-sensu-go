@@ -6,6 +6,12 @@
     - role: ansible-sensu-go
   vars:
     server: true
+
+    slack: true
+    # yamllint disable-line rule:line-length
+    slack_webhook_url: https://hooks.slack.com/services/xxx
+    slack_channel: "@elias"
+
     sensu_client_subs:
       - linux
     sensu_cluster: false
