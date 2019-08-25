@@ -6,8 +6,15 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: nginx-centos-01
+  - name: centos-01
     image: centos:7.6.1810
+    privileged: true
+    command: '/lib/systemd/systemd'
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  - name: ubuntu-01
+    image: ubuntu:xenial
     privileged: true
     command: '/lib/systemd/systemd'
     volumes:

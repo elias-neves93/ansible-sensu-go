@@ -1,52 +1,51 @@
 ---
-# Slack handler
-- name: Install ASSET sensu-slack-handler
-  command: sensuctl create --file /opt/sensu/assets/sensu-slack-handler.yml
-  run_once: true
-  when: slack
-  ignore_errors: true
-
 # CPU Checks
 - name: Install ASSET sensu-plugins-cpu-checks CentOS
-  command: sensuctl create \
-    --file /opt/sensu/assets/sensu-plugins-cpu-checks-4.0.0-centos-amd64.yml
+  command: sensuctl asset create sensu-plugins-cpu-checks \
+         --url "https://assets.bonsai.sensu.io/68546e739d96fd695655b77b35b5aabfbabeb056/sensu-plugins-cpu-checks_4.0.0_centos_linux_amd64.tar.gz" \
+         --sha512 "518e7c17cf670393045bff4af318e1d35955bfde166e9ceec2b469109252f79043ed133241c4dc96501b6636a1ec5e008ea9ce055d1609865635d4f004d7187b"
   run_once: true
   when: ansible_os_family == 'RedHat'
   ignore_errors: true
 
 - name: Install ASSET sensu-plugins-cpu-checks Debian
-  command: sensuctl create \
-    --file /opt/sensu/assets/sensu-plugins-cpu-checks-4.0.0-debian-amd64.yml
+  command: sensuctl asset create sensu-plugins-cpu-checks \
+         --url "https://assets.bonsai.sensu.io/68546e739d96fd695655b77b35b5aabfbabeb056/sensu-plugins-cpu-checks_4.0.0_debian_linux_amd64.tar.gz" \
+         --sha512 "da5a183ad1a1f76962561eed659c6184b3e5d6a412432e1ccb4297cce123c41f9a8bb4fdb9ab19663aada978ea862ab2bd5f00bc91e4769ddd87543f5662b3af"
   run_once: true
   when: ansible_os_family == 'Debian'
   ignore_errors: true
 
 # Memory
 - name: Install ASSET sensu-plugins-memory-checks CentOS
-  command: sensuctl create \
-    --file /opt/sensu/assets/sensu-plugins-memory-checks-4.0.0-centos-amd64.yml
+  command: sensuctl asset create sensu-plugins-memory-checks \
+         --url "https://assets.bonsai.sensu.io/c5391d4ae186484226732344b35cf95c0b07b8ec/sensu-plugins-memory-checks_4.0.0_centos_linux_amd64.tar.gz"\
+         --sha512 "ea297a85aa3612da7f78d948f9784443fffac511040c5130a2dcde7191a0004044c2ef881e665520cbc64431955ab19920d84de6b5fed85c63da7091c4b93bf0"
   run_once: true
   when: ansible_os_family == 'RedHat'
   ignore_errors: true
 
 - name: Install ASSET sensu-plugins-memory-checks Debian
-  command: sensuctl create \
-    --file /opt/sensu/assets/sensu-plugins-memory-checks-4.0.0-debian-amd64.yml
+  command: sensuctl asset create sensu-plugins-memory-checks \
+         --url "https://assets.bonsai.sensu.io/c5391d4ae186484226732344b35cf95c0b07b8ec/sensu-plugins-memory-checks_4.0.0_debian_linux_amd64.tar.gz" \
+         --sha512 "3c61ab6f4eb5dea4ee816e4f9a4f857660ac32648d0ecd7804e1827351d8fe021f29e557d9600ecac8cd16d261c8ff2dc113790a544ce1148a8cb321546552d6"
   run_once: true
   when: ansible_os_family == 'Debian'
   ignore_errors: true
 
 # Disk
 - name: Install ASSET sensu-plugins-disk-checks CentOS
-  command: sensuctl create \
-    --file /opt/sensu/assets/sensu-plugins-disk-checks-5.0.0-centos-amd64.yml
+  command: sensuctl asset create sensu-plugins-disk-checks \
+         --url "https://assets.bonsai.sensu.io/73a6f8b6f56672630d83ec21676f9a6251094475/sensu-plugins-disk-checks_5.0.0_centos_linux_amd64.tar.gz" \
+         --sha512 "0ce9d52b270b77f4cab754e55732ae002228201d0bd01a89b954a0655b88c1ee6546e2f82cfd1eec04689af90ad940cde128e8867912d9e415f4a58d7fdcdadf"
   run_once: true
   when: ansible_os_family == 'RedHat'
   ignore_errors: true
 
 - name: Install ASSET sensu-plugins-disk-checks Debian
-  command: sensuctl create \
-    --file /opt/sensu/assets/sensu-plugins-disk-checks-5.0.0-debian-amd64.yml
+  command: sensuctl asset create sensu-plugins-disk-checks \
+         --url "https://assets.bonsai.sensu.io/73a6f8b6f56672630d83ec21676f9a6251094475/sensu-plugins-disk-checks_5.0.0_debian_linux_amd64.tar.gz" \
+         --sha512 "efcc00a70ed8ebcab401b7dbd595d770a2b441e56d99143a923cbfc98977f6d085388b7411da706d47e6150b31ffa9b41ba78a0ee35a0e19eb21eee713009e19"
   run_once: true
   when: ansible_os_family == 'Debian'
   ignore_errors: true
