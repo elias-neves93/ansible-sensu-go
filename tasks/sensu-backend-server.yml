@@ -83,37 +83,6 @@
     - {path: "{{ sensu_certs }}/key.pem" , content: "{{ key_file }}" }
     - {path: "{{ ca_certs }}/ca.pem" , content: "{{ trusted_ca_file }}" }
 
-#- name: ssl directory CA
-#  file:
-#    path: /usr/local/share/ca-certificates/sensu/
-#    state: directory
-#    owner: "sensu"
-#    group: "sensu"
-#    mode: 0750
-#  when: ssl_conf
-#
-#- name: Copy SSL certificates "{{ ansible_hostname }}" PEM
-#  copy:
-#    src: "{{ item }}"
-#    dest: /etc/sensu/certs
-#    owner: sensu
-#    group: sensu
-#    mode: '0644'
-#  when: ssl_conf == True
-#  with_fileglob:
-#    - "files/certs/{{ ansible_hostname }}*.pem"
-#
-#- name: Copy CA certificates
-#  copy:
-#    src: "{{ item }}"
-#    dest: /usr/local/share/ca-certificates/sensu/
-#    owner: sensu
-#    group: sensu
-#    mode: '0644'
-#  when: ssl_conf == True
-#  with_fileglob:
-#    - "files/certs/ca*"
-
 - name: Create config file sensu-backend
   template:
     src: backend.yml.j2
@@ -138,5 +107,5 @@
 
 - name: Sensuctl configure
   command: "sensuctl configure --non-interactive --username {{ default_user }} \
-            --password {{ default_pass }} --url http://localhost:8080 \
+            --password {{ default_pass }} --url {{ api_url }}  \
             --format tabular --namespace default"

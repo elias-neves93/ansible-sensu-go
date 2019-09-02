@@ -7,6 +7,8 @@ debug: false
 
 dashboard_port: 3000
 
+api_url: http://localhost:8080
+
 ssl_conf: false
 api_dashboard_ssl: false
 sensu_cluster: false
@@ -32,6 +34,23 @@ sensu_certs: /etc/sensu/certs
 ca_certs: /usr/local/share/ca-certificates/sensu
 
 insecure_skip_tls_verify: false
+
+etcd_peer_content: |
+
+
+etcd_peer_key_content: |
+
+
+etcd_peer_trusted_ca_content: |
+
+
+cert_file: |
+
+
+key_file: |
+
+
+trusted_ca_file: |
 
 # sensu server
 user_sensu: sensu
