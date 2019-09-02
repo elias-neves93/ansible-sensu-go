@@ -23,26 +23,35 @@ debug: {{ debug }}
 #api-listen-address: "[::]:8080" # listen on all IPv4 and IPv6 addresses
 #api-url: "http://localhost:8080"
 
-{%if dashboard_ssl == true%}
+{%if ssl_conf == true%}
+
+{%if api_dashboard_ssl == true%}
 ##
-# dashboard configuration
+# ssl api configuration
 ##
-dashboard-cert-file: "{{ dashboard_cert_file }}"
-dashboard-key-file: "{{ dashboard_key_file }}"
+cert-file: "{{ sensu_certs }}/cert.pem"
+key-file: "{{ sensu_certs }}/key.pem"
+trusted-ca-file: "{{ ca_certs }}/ca.pem"
+insecure-skip-tls-verify: {{ insecure_skip_tls_verify }}
+##
+# ssl dashboard configuration
+##
+dashboard-cert-file: "{{ sensu_certs }}/cert.pem"
+dashboard-key-file: "{{ sensu_certs }}/key.pem"
+{% endif %}
+
+{%if etcd_ssl == true%}
+# etcd ssl
+etcd-peer-cert-file: "{{ sensu_certs }}/{{ ansible_hostname }}.pem"
+etcd-peer-client-cert-auth: {{ etcd_peer_client_cert_auth }}
+etcd-peer-key-file: "{{ sensu_certs }}/{{ ansible_hostname }}-key.pem"
+etcd-peer-trusted-ca-file: "{{ ca_certs }}/ca.pem"
+{% endif %}
+
 {% endif %}
 
 dashboard-host: "[::]" # listen on all IPv4 and IPv6 addresses
 dashboard-port: {{ dashboard_port }}
-
-{%if ssl_conf == true%}
-##
-# ssl configuration
-##
-cert-file: "{{ cert-file }}"
-key-file: "{{ key-file }}"
-trusted-ca-file: "{{ trusted-ca-file }}"
-insecure-skip-tls-verify: {{ insecure-skip-tls-verify }}
-{% endif %}
 
 ##
 # store configuration
@@ -59,13 +68,10 @@ etcd-listen-peer-urls: "{{ etcd_listen_peer_urls }}"
 etcd-name: "{{ etcd_name }}"
 {% endif %}
 
+
 #etcd-key-file: "/path/to/ssl/key.pem"
 #etcd-cert-file: "/path/to/ssl/cert.pem"
 #etcd-client-cert-auth: false
-#etcd-peer-cert-file: "/path/to/ssl/cert.pem"
-#etcd-peer-client-cert-auth: false
-#etcd-peer-key-file: "/path/to/ssl/key.pem"
-#etcd-peer-trusted-ca-file: "/path/to/ssl/key.pem"
 #etcd-trusted-ca-file: "/path/to/ssl/key.pem"
 #no-embed-etcd: false
 #etcd-cipher-suites

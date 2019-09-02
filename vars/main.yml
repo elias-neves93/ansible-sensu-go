@@ -2,3 +2,20 @@
 # vars file for roles/ansible-sensu-go
 default_user: admin
 default_pass: P@ssw0rd!
+
+etcd_peer_content: |
+
+
+etcd_peer_key_content: |
+
+
+etcd_peer_trusted_ca_content: |
+
+
+cert_file: |
+
+
+key_file: |
+
+
+trusted_ca_file: |

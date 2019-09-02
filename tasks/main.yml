@@ -19,8 +19,8 @@
   tags: sensu-agent
   static: false
 
-- include: plugins.yml
-  tags: plugins
+- include: deps.yml
+  tags: deps
 
 - import_tasks: handlers.yml
   tags: handlers

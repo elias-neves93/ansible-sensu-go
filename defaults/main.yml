@@ -4,11 +4,11 @@ state_dir: "/var/lib/sensu/sensu-backend"
 cache_dir: "/var/cache/sensu/sensu-backend"
 config_file: "/etc/sensu/backend.yml"
 debug: false
-dashboard_ssl: false
 
 dashboard_port: 3000
 
 ssl_conf: false
+api_dashboard_ssl: false
 sensu_cluster: false
 server: false
 
@@ -25,6 +25,13 @@ etcd_listen_client_urls: "http://{{ ansible_default_ipv4.address }}:2379"
 etcd_listen_peer_urls: "http://0.0.0.0:2380"
 etcd_name: "{{ ansible_hostname }}"
 
+etcd_ssl: false
+etcd_peer_client_cert_auth: false
+
+sensu_certs: /etc/sensu/certs
+ca_certs: /usr/local/share/ca-certificates/sensu
+
+insecure_skip_tls_verify: false
 
 # sensu server
 user_sensu: sensu
