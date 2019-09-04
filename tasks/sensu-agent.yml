@@ -37,6 +37,26 @@
       - "sensu-go-agent"
   when: ansible_os_family == 'RedHat'
 
+- name: ssl directory CA
+  file:
+    path: /usr/local/share/ca-certificates/sensu/
+    state: directory
+    owner: "sensu"
+    group: "sensu"
+    mode: 0750
+  when: ssl_conf
+
+- name: Create SSL certificates
+  copy:
+    dest="{{ item.path }}"
+    content="{{ item.content }}"
+    owner="sensu"
+    group="sensu"
+    mode="0640"
+  when: ssl_conf and api_dashboard_ssl
+  with_items:
+    - {path: "{{ ca_certs }}/ca.pem" , content: "{{ trusted_ca_file }}" }
+
 - name: Define Subscritions
   set_fact:
     all_subs: "{{ subs_default + sensu_client_subs }}"

@@ -1,3 +1,5 @@
 ### Molecule ###
 # pycache
 molecule/default/tests/__pycache__
+.pytest*
+files/certs*

@@ -1,5 +1,5 @@
 ---
-- name: Install Plugins Packages
+- name: Install Plugins Packages Ubuntu/Debian
   apt:
     name: "{{ packages }}"
   vars:
@@ -10,3 +10,15 @@
       - "python-setuptools"
       - "numactl"
   when: ansible_os_family == 'Debian'
+
+- name: Install Plugins Packages RHEL/CentOS
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - "gcc"
+      - "python-pip"
+      - "ruby"
+      - "python-setuptools"
+      - "numactl"
+  when: ansible_os_family == 'RedHat'
