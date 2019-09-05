@@ -68,7 +68,9 @@ log-level: "debug" # available log levels: panic, fatal, error, warn, info, debu
 #  - secret_key
 #  - private_key
 #  - secret
-#trusted-ca-file: "/path/to/trusted-certificate-authorities.pem"
+{%if ssl_conf == true%}
+trusted-ca-file: "{{ ca_certs }}/ca.pem"
+{%endif%}
 
 ##
 # socket configuration

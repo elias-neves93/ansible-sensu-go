@@ -7,7 +7,7 @@ debug: false
 
 dashboard_port: 3000
 
-api_url: http://localhost:8080
+api_url: http://{{ ansible_default_ipv4.address }}:8080
 
 ssl_conf: false
 api_dashboard_ssl: false
