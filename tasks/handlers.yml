@@ -1,6 +1,6 @@
 ---
 # CPU Checks
-- name: Check CPU
+- name: Handler Slack
   command: sensuctl handler create slack \
     --type pipe \
     --env-vars "SLACK_WEBHOOK_URL={{ slack_webhook_url }}" \
